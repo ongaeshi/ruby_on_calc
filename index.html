@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ruby on Calc</title>
+    <style>
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+.input-display {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+.buttons, .control-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* 追加: ボタンが多い場合は折り返す */
+}
+.button, .control-button {
+    margin: 5px;
+    padding: 10px;
+    width: 60px; /* ボタンの幅 */
+    height: 60px; /* ボタンの高さ */
+    font-size: 20px;
+    cursor: pointer;
+    display: flex; /* Flexboxを使って中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    justify-content: center; /* 水平方向の中央揃え */
+}
+/* 数値ボタンのスタイル */
+.button {
+    background-color: #f0f0f0; /* 背景色 */
+}
+
+/* 操作ボタン (+, -, *, /) のスタイル */
+.button:nth-child(4n), /* 4の倍数位置にあるボタン */
+.button:last-child { /* 最後のボタン */
+    background-color: #ffd700; /* 背景色 */
+}
+
+/* コントロールボタン (Redo, Undo, Copy, Edit) のスタイル */
+.control-button {
+    background-color: #add8e6; /* 背景色 */
+}
+
+/* ボタンのホバー効果 */
+.button:hover, .control-button:hover {
+    background-color: #e0e0e0; /* ホバー時の背景色 */
+}
+
+/* 操作ボタンのホバー効果 */
+.button:nth-child(4n):hover,
+.button:last-child:hover {
+    background-color: #ffec8b; /* ホバー時の背景色 */
+}
+
+/* コントロールボタンのホバー効果 */
+.control-button:hover {
+    background-color: #b0e0e6; /* ホバー時の背景色 */
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-display" id="display">0</div>
+        <div class="buttons">
+            <div class="button">7</div>
+            <div class="button">8</div>
+            <div class="button">9</div>
+            <div class="button">/</div>
+        </div>
+        <div class="buttons">
+            <div class="button">4</div>
+            <div class="button">5</div>
+            <div class="button">6</div>
+            <div class="button">*</div>
+        </div>
+        <div class="buttons">
+            <div class="button">1</div>
+            <div class="button">2</div>
+            <div class="button">3</div>
+            <div class="button">-</div>
+        </div>
+        <div class="buttons">
+            <div class="button">0</div>
+            <div class="button">.</div>
+            <div class="button">=</div>
+            <div class="button">+</div>
+        </div>
+        <div class="control-buttons">
+            <div class="control-button" id="undo">Undo</div>
+            <div class="control-button" id="redo">Redo</div>
+            <div class="control-button" id="copy">Copy</div>
+            <div class="control-button" id="edit">Edit</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
