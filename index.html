@@ -43,7 +43,7 @@
 
         <!-- 入力ボタン -->
         <div class="row mt-3">
-            <div class="col-3"><button class="btn btn-outline-secondary w-100 button b1">A</button></div>
+            <div class="col-3"><button id="b1" class="btn btn-outline-secondary w-100 button b1">A</button></div>
             <div class="col-3"><button class="btn btn-outline-secondary w-100 button b1">B</button></div>
             <div class="col-3"><button class="btn btn-outline-secondary w-100 button b1">C</button></div>
             <div class="col-3"><button class="btn btn-outline-secondary w-100 button b1">D</button></div>
@@ -83,10 +83,26 @@
         </div>
     </div>
 
-    <!-- BootstrapのJavaScriptと依存関係 -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ruby/3.3-wasm-wasi@2.5.0/dist/browser.script.iife.js"></script>
     <script src="app.js"></script>
+    <script type="text/ruby">
+        require "js"
+
+        def ruby_version(input)
+          RUBY_VERSION
+        end
+            
+        document = JS.global[:document]
+        display = JS.global[:display]
+
+        b1 = document.getElementById("b1")
+        b1[:innerText] = "RUBY_VERSION"
+        b1.addEventListener("click") do |e|
+          display[:value] = RUBY_VERSION
+        end
+    </script>
 </body>
 </html>
