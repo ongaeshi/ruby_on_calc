@@ -32,6 +32,7 @@
         }        
     </style>        
 </head>
+<script src="https://cdn.jsdelivr.net/npm/@ruby/3.3-wasm-wasi@2.5.0/dist/browser.script.iife.js"></script>
 <body>
     <div class="container mt-5">
         <!-- テキスト入力画面 -->
@@ -88,21 +89,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@ruby/3.3-wasm-wasi@2.5.0/dist/browser.script.iife.js"></script>
     <script src="app.js"></script>
-    <script type="text/ruby">
-        require "js"
-
-        def ruby_version(input)
-          RUBY_VERSION
-        end
-            
-        document = JS.global[:document]
-        display = JS.global[:display]
-
-        b1 = document.getElementById("b1")
-        b1[:innerText] = "RUBY_VERSION"
-        b1.addEventListener("click") do |e|
-          display[:value] = RUBY_VERSION
-        end
-    </script>
+    <script type="text/ruby" src="main.rb"></script>
 </body>
 </html>
