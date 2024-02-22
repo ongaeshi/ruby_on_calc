@@ -12,7 +12,7 @@ def set_button(id, name)
 end
 
 # Setup buttons
-
+# 1-4
 set_button("b1", "UPCASE") do |input|
   input.upcase
 end
@@ -25,6 +25,28 @@ set_button("b3", "Capitalize") do |input|
   input.capitalize
 end
 
+# 5-8
+set_button("b5", "split") do |input|
+  input.split(" ").inspect
+end
+
+set_button("b6", "map") do |input|
+  eval(input).map do |e|
+    e * 2
+  end.inspect
+end
+
+set_button("b7", "join") do |input|
+  eval(input).join(" ")
+end
+
+set_button("b8", "reduce") do |input|
+  eval(input).reduce(:+)
+end
+
+# 9-12
+
+# 13-16
 set_button("b13", "RUBY_VERSION") do
   RUBY_VERSION
 end
