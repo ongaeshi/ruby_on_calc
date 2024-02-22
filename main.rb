@@ -13,10 +13,27 @@ end
 
 # Setup buttons
 
-set_button("b1", "RUBY_VERSION") do
+set_button("b1", "UPCASE") do |input|
+  input.upcase
+end
+
+set_button("b2", "downcase") do |input|
+  input.downcase
+end
+
+set_button("b3", "Capitalize") do |input|
+  input.capitalize
+end
+
+set_button("b13", "RUBY_VERSION") do
   RUBY_VERSION
 end
 
-set_button("b5", "UPCASE") do |input|
-  input.upcase
+set_button("b14", "Lorem Ipsum") do
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+end
+
+set_button("b15", "console") do |input|
+  JS.global[:console].log(input)
+  input
 end
