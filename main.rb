@@ -1,17 +1,22 @@
 require "js"
 
 def set_button(id, name)
-  button = JS.global[:document].getElementById(id)
+  document = JS.global[:document]
+  display = JS.global[:display]
+
+  button = document.getElementById(id)
   button[:innerText] = name
   button.addEventListener("click") do |e|
-    yield
+    display[:value] = yield display[:value].to_s
   end
 end
 
 # Setup buttons
-document = JS.global[:document]
-display = JS.global[:display]
 
 set_button("b1", "RUBY_VERSION") do
-  display[:value] = RUBY_VERSION
+  RUBY_VERSION
+end
+
+set_button("b5", "UPCASE") do |input|
+  input.upcase
 end
