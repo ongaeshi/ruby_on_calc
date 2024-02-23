@@ -7,7 +7,8 @@ def set_button(id, name)
   button = document.getElementById(id)
   button[:innerText] = name
   button.addEventListener("click") do |e|
-    display[:value] = yield display[:value].to_s
+    ret = yield display[:value].to_s
+    display[:value] = ret.is_a?(String) ? ret : ret.inspect
   end
 end
 
@@ -27,13 +28,13 @@ end
 
 # 5-8
 set_button("b5", "split") do |input|
-  input.split(" ").inspect
+  input.split(" ")
 end
 
 set_button("b6", "map") do |input|
   eval(input).map do |e|
     e * 2
-  end.inspect
+  end
 end
 
 set_button("b7", "join") do |input|
