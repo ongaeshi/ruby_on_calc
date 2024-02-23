@@ -52,6 +52,9 @@ set_button_to_expect_object("b8", "reduce") do |input|
 end
 
 # 9-12
+set_button_to_expect_object("b9", "eval") do |input|
+  input
+end
 
 # 13-16
 set_button("b13", "RUBY_VERSION") do
