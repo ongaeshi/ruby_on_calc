@@ -12,12 +12,6 @@ def set_button(id, name)
   end
 end
 
-def set_button_to_expect_object(id, name)
-  set_button(id, name) do |input|
-    yield eval(input)
-  end
-end
-
 # Setup buttons
 # 1-4
 set_button("b1", "UPCASE") do |input|
@@ -37,28 +31,28 @@ set_button("b5", "split") do |input|
   input.split(" ")
 end
 
-set_button_to_expect_object("b6", "map") do |input|
-  input.map do |e|
+set_button("b6", "map") do |input|
+  eval(input).map do |e|
     e * 2
   end
 end
 
-set_button_to_expect_object("b7", "join") do |input|
-  input.join(" ")
+set_button("b7", "join") do |input|
+  eval(input).join(" ")
 end
 
-set_button_to_expect_object("b8", "reduce") do |input|
-  input.reduce(:+)
+set_button("b8", "reduce") do |input|
+  eval(input).reduce(:+)
 end
 
 # 9-12
-set_button_to_expect_object("b9", "eval") do |input|
-  input
+set_button("b9", "gsub") do |input|
+  input.gsub("do", "DOOON")
 end
 
 # 13-16
-set_button("b13", "RUBY_VERSION") do
-  RUBY_VERSION
+set_button("b13", "eval") do |input|
+  eval(input)
 end
 
 set_button("b14", "Lorem Ipsum") do
@@ -69,3 +63,8 @@ set_button("b15", "console") do |input|
   JS.global[:console].log(input)
   input
 end
+
+set_button("b16", "RUBY_VERSION") do
+  RUBY_VERSION
+end
+
