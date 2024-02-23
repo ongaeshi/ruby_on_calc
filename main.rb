@@ -12,7 +12,7 @@ def set_button(id, name)
   end
 end
 
-# Setup buttons
+# Setup buttons.
 # 1-4
 set_button("b1", "UPCASE") do |input|
   input.upcase
