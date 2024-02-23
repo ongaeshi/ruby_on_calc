@@ -12,6 +12,12 @@ def set_button(id, name)
   end
 end
 
+def set_button_to_expect_object(id, name)
+  set_button(id, name) do |input|
+    yield eval(input)
+  end
+end
+
 # Setup buttons
 # 1-4
 set_button("b1", "UPCASE") do |input|
@@ -31,18 +37,18 @@ set_button("b5", "split") do |input|
   input.split(" ")
 end
 
-set_button("b6", "map") do |input|
-  eval(input).map do |e|
+set_button_to_expect_object("b6", "map") do |input|
+  input.map do |e|
     e * 2
   end
 end
 
-set_button("b7", "join") do |input|
-  eval(input).join(" ")
+set_button_to_expect_object("b7", "join") do |input|
+  input.join(" ")
 end
 
-set_button("b8", "reduce") do |input|
-  eval(input).reduce(:+)
+set_button_to_expect_object("b8", "reduce") do |input|
+  input.reduce(:+)
 end
 
 # 9-12
