@@ -12,6 +12,11 @@ def set_button(id, name)
   end
 end
 
+def shorten_amazon_url(url)
+  match = url.match(/\/dp\/(\w+)/)
+  "https://amazon.co.jp/dp/#{match[1]}" if match
+end
+
 # Setup buttons.
 # 1-4
 set_button("b1", "UPCASE") do |input|
@@ -24,6 +29,10 @@ end
 
 set_button("b3", "Capitalize") do |input|
   input.capitalize
+end
+
+set_button("b4", "Ama短") do |input|
+  shorten_amazon_url(input)
 end
 
 # 5-8
